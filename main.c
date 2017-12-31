@@ -1,11 +1,15 @@
 //#include "allvars.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <gsl/gsl_integration.h>
 #include "hansen.h"
+
 
 int main (void){
 
-  printf("%f\n",hansen(-3,2));
+  printf("%1.7f\n",hansen(0.27,0));
+  printf("%1.7f\n",hansen(0.27,7));
 
 
 
