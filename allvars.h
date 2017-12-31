@@ -1,15 +1,17 @@
 #define AU     149.6e9
 #define MS     1.989e30
+#define ME     5.9723e24
+#define RE     6.371e6
 #define RS     6.957e8
 #define MJ     1.898e27
 #define RJ     6.9911e7
-#define ME     5.972e24
-#define RE     6.371e6
 #define YEARS  365.25*86400
 #define DAYS   86400.0 
 #define G      1.0
 #define PI     3.14159265358979323
-  
+#define InRad    np.pi/180
+#define InDeg    180/np.pi 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,13 +24,8 @@
 #include <gsl/gsl_integration.h>
 #include <libconfig.h>
 #include "Units.h"
-
-
-
 #include "Params.h"
-
-
-#include "FetchInfo.h"
+//#include "FetchInfo.h"
 
 
 

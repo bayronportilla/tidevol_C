@@ -1,16 +1,17 @@
-//#include "allvars.h"
+#include "allvars.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <gsl/gsl_integration.h>
 #include "hansen.h"
+#include "Torques.h"
+
 
 
 int main (void){
 
-  printf("%1.7f\n",hansen(0.27,0));
-  printf("%1.7f\n",hansen(0.27,7));
-
+  Inpar st;
+  st = params();
 
 
   exit(0);  
