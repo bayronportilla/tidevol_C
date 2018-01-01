@@ -5,29 +5,29 @@
 #include <gsl/gsl_integration.h>
 #include "hansen.h"
 #include <gsl/gsl_sf_gamma.h>
-
-
 #include "Torques.h"
 
 int main (void){
 
   Inpar st;
   st = params();
+  
+  double C = st.gyr_rad*st.m_p*st.R_p*st.R_p;
 
-  printf("%e\n",fabs(2.0));
-  /*
+  printf("%Le\n",tidal_torque(2.002*st.uT,st.a,st.e,st)/C /(st.uT*st.uT));
+
+
+
   FILE *fp;
-  fp = fopen("tidal_torque_c.dat","w");
+  fp = fopen("tidal_torque_2.dat","w");
     
-
   float i;
-  double n = 2.0*M_PI/P;
-  double C        = 0.4*M_p*R*R;
-  for(i=1.995;i<2.005;i+=0.00001){
+  
+  for(i=1.995;i<2.005;i+=0.000001){
     //printf("%e \n",tidal_torque(i*n)/C *pow(365.25*86400,2));
-    fprintf(fp,"%1.5f     %Le  \n",i,tidal_torque(i*n)/C *pow(365.25*86400,2));
+    fprintf(fp,"%1.5f     %Le\n", i, tidal_torque(i*n(st.m_s,st.m_p,st.a),st.a,st.e,st)/C * (YEARS*YEARS/(st.uT*st.uT)) );
   }
-  */
+
   exit(0);  
     //  Inpar st;
     //st = params();

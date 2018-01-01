@@ -5,7 +5,7 @@
 #define RS     6.957e8
 #define MJ     1.898e27
 #define RJ     6.9911e7
-#define YEARS  365.25*86400
+#define YEARS  365.25*86400.0
 #define DAYS   86400.0 
 #define G      1.0
 #define PI     3.14159265358979323

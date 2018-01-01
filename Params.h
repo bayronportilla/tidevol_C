@@ -141,14 +141,14 @@ Inpar params(){
 
 
   rest.m_p      = m_p * ME/uM;
-  rest.R_p      = R_p * RS/uL;
+  rest.R_p      = R_p * RE/uL;
   rest.BmAC     = BmAC;
   rest.gyr_rad  = gyr_rad;
   rest.a        = a * AU/uL;
   rest.e        = e;
   rest.P_rot    = P_rot * DAYS/uT;
-  rest.tau_M    = tau_M * DAYS/uT;
-  rest.mu       = mu;
+  rest.tau_M    = tau_M * YEARS/uT;
+  rest.mu       = mu * (uL*uT*uT/uM);
   rest.alpha    = alpha;
   rest.m_s      = m_s * MS/uM;
   rest.sim_name = sim_name;
