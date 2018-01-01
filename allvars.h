@@ -25,6 +25,7 @@
 #include <libconfig.h>
 #include "Units.h"
 #include "Params.h"
+#include "generic.h"
 //#include "FetchInfo.h"
 
 

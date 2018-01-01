@@ -104,6 +104,7 @@ Inpar params(){
       config_setting_lookup_float(object,  "a",       &a);
       config_setting_lookup_float(object,  "e",       &e);
       config_setting_lookup_float(object,  "P_rot",   &P_rot);
+      config_setting_lookup_float(object,  "tau_M",   &tau_M);
       config_setting_lookup_float(object,  "mu",      &mu);
       config_setting_lookup_float(object,  "alpha",   &alpha);
     }
