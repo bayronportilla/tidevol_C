@@ -11,19 +11,25 @@ int main (void){
 
   Inpar st;
   st = params();
-  
-  double C = st.gyr_rad*st.m_p*st.R_p*st.R_p;
 
+  printf("%s \n",st.sim_name);
+
+  double C = st.gyr_rad*st.m_p*st.R_p*st.R_p;
+  FetchInfo(st);
   printf("%Le\n",tidal_torque(2.002*st.uT,st.a,st.e,st)/C /(st.uT*st.uT));
 
-
-
   FILE *fp;
-  fp = fopen("tidal_torque_2.dat","w");
+  char src[100];
+  char dest[100];
+  char name_files[100];
+  strcpy(src,st.sim_name);
+  strcpy(dest,".dat");
+  strcpy(name_files,strcat(src,dest));
+  fp = fopen(name_files,"w");
+
     
   float i;
-  
-  for(i=1.995;i<2.005;i+=0.000001){
+  for(i=1.9996;i<2.0004;i+=0.000001){
     //printf("%e \n",tidal_torque(i*n)/C *pow(365.25*86400,2));
     fprintf(fp,"%1.5f     %Le\n", i, tidal_torque(i*n(st.m_s,st.m_p,st.a),st.a,st.e,st)/C * (YEARS*YEARS/(st.uT*st.uT)) );
   }

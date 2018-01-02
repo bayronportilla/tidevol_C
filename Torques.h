@@ -21,8 +21,7 @@ long double tidal_torque(double Omega, double a, double e, Inpar params){
   for (q=dolim; q<uplim; q++){
     omega = (2.0+q)*mean_motion-2.0*Omega;
     chi   = fabs(omega);
-    tau_A = (100.0*exp(-chi/(0.2*params.uT/YEARS)) + 1.0)*tau_M ;
-    //tau_A = (100.0*exp(-chi/(0.2)) + 1.0)*tau_M ;
+    tau_A = (100.0*exp(-chi/(0.2)) + 1.0)*tau_M ;
     
     Re         = 1.0 + pow(chi*tau_A,-alpha)*cos(0.5*alpha*M_PI)*gsl_sf_gamma(alpha+1.0);   
     Im         = -pow(chi*tau_M,-1.0) - pow(chi*tau_A,-alpha)*sin(0.5*alpha*M_PI)*gsl_sf_gamma(alpha+1.0);
