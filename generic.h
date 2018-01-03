@@ -18,17 +18,18 @@ int sign(double x){
   }
 }
 
+
 /* ----------------------------------------------------------------------
 SOLVE KEPLER EQUATION
 Source:
-Taken from http://astro.pas.rochester.edu/~aquillen/ast570/code/kepcart.cpp
+Adapted from http://astro.pas.rochester.edu/~aquillen/ast570/code/kepcart.cpp
 supposed to be good to second order in e, from Brouwer+Clemence u0 is
 first guess
 ---------------------------------------------------------------------- */
-#define PREC_ECC_ANO 1e-14
-Real solveKepler(Real e,Real M)
+
+double solveKepler(double e, double M)
 {
-  Real du,u0,l0;
+  double du,u0,l0;
   du=1.0;
   u0=M+e*sin(M)+0.5*e*e*sin(2.0*M);
   while(fabs(du)>PREC_ECC_ANO){
