@@ -14,6 +14,9 @@ int main (void){
 
   printf("%s \n",st.sim_name);
 
+  printf("%1.11f\n",solveKepler(0.0,120*InRad));
+  
+  exit(0);
   double C = st.gyr_rad*st.m_p*st.R_p*st.R_p;
   FetchInfo(st);
   printf("%Le\n",tidal_torque(2.002*st.uT,st.a,st.e,st)/C /(st.uT*st.uT));

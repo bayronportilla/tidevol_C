@@ -9,8 +9,9 @@
 #define DAYS   86400.0 
 #define G      1.0
 #define PI     3.14159265358979323
-#define InRad    np.pi/180
-#define InDeg    180/np.pi 
+#define InRad    M_PI/180.0
+#define InDeg    180.0/M_PI
+#define PREC_ECC_ANO 1e-14
 
 #include <stdio.h>
 #include <stdlib.h>
