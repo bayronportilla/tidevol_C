@@ -100,6 +100,7 @@ Inpar params(){
       
       config_setting_lookup_float(object,  "mass",    &m_p);
       config_setting_lookup_float(object,  "radius",  &R_p);
+      config_setting_lookup_float(object,  "BmAC",    &BmAC);
       config_setting_lookup_float(object,  "gyr_rad", &gyr_rad);
       config_setting_lookup_float(object,  "a",       &a);
       config_setting_lookup_float(object,  "e",       &e);

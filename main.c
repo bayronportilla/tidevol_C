@@ -13,6 +13,7 @@ int main (void){
   st = params();
   FetchInfo(st);
 
+  /*
   FILE *fp;
   char src[100];
   char dest[100];
@@ -21,13 +22,14 @@ int main (void){
   strcpy(dest,".dat");
   strcpy(name_files,strcat(src,dest));
   fp = fopen(name_files,"w");
-
-    
   float i;
   for(i=1.995;i<2.005;i+=0.000001){
     //printf("%e \n",tidal_torque(i*n)/C *pow(365.25*86400,2));
     fprintf(fp,"%1.5f     %e\n", i, tidal_torque(i*n(st.m_s,st.m_p,st.a),st.a,st.e,st)/Cfactor(st.m_p,st.R_p,st.gyr_rad) * (YEARS*YEARS/(st.uT*st.uT)) );
   }
+  */
+  
+  printf("%e\n",triaxial_torque(0.0,st.a,st.e,st,1.0));
 
   exit(0);  
     //  Inpar st;
