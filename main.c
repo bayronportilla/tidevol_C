@@ -11,15 +11,7 @@ int main (void){
 
   Inpar st;
   st = params();
-
-  printf("%s \n",st.sim_name);
-
-  printf("%1.11f\n",solveKepler(0.0,120*InRad));
-  
-  exit(0);
-  double C = st.gyr_rad*st.m_p*st.R_p*st.R_p;
   FetchInfo(st);
-  printf("%Le\n",tidal_torque(2.002*st.uT,st.a,st.e,st)/C /(st.uT*st.uT));
 
   FILE *fp;
   char src[100];
@@ -32,9 +24,9 @@ int main (void){
 
     
   float i;
-  for(i=1.9996;i<2.0004;i+=0.000001){
+  for(i=1.995;i<2.005;i+=0.000001){
     //printf("%e \n",tidal_torque(i*n)/C *pow(365.25*86400,2));
-    fprintf(fp,"%1.5f     %Le\n", i, tidal_torque(i*n(st.m_s,st.m_p,st.a),st.a,st.e,st)/C * (YEARS*YEARS/(st.uT*st.uT)) );
+    fprintf(fp,"%1.5f     %e\n", i, tidal_torque(i*n(st.m_s,st.m_p,st.a),st.a,st.e,st)/Cfactor(st.m_p,st.R_p,st.gyr_rad) * (YEARS*YEARS/(st.uT*st.uT)) );
   }
 
   exit(0);  

@@ -39,3 +39,8 @@ double solveKepler(double e, double M)
   }
   return u0;
 }
+
+
+double Cfactor(double m_p, double R_p, double gyr_rad){
+  return gyr_rad*m_p*R_p*R_p;
+}

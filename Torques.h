@@ -1,4 +1,4 @@
-long double tidal_torque(double Omega, double a, double e, Inpar params){
+double tidal_torque(double Omega, double a, double e, Inpar params){
 
   double sum_tidal;
   double omega, chi;
@@ -31,4 +31,6 @@ long double tidal_torque(double Omega, double a, double e, Inpar params){
   
   return 1.5*G*m_s*m_s*pow(R_p,5)*pow(a,-6)*sum_tidal;
 }
+
+
 
