@@ -26,10 +26,12 @@ int FetchInfo(Inpar st){
 14  uL            %1.17e \n\
 15  uT            %1.17e \n\
 16  h_output      %1.17e \n\
-17  sim_name      %s     \n",
+17  sim_name      %s     \n\
+16  theta_ini     %1.17e \n\
+16  res_ini       %1.17e \n",
 	  st.m_p,st.R_p,st.BmAC,st.gyr_rad,st.a,st.e,st.P_rot,st.tau_M,st.mu,
 	  st.alpha,st.m_s,st.t_ini,st.t_end,st.uM,st.uL,st.uT,
-	  st.h_output,st.sim_name);
+	  st.h_output,st.sim_name,st.theta_ini,st.res_ini);
   
   return 0;
 }

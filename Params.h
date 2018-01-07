@@ -21,6 +21,10 @@ typedef struct Inpar_params{
   double t_end;
   double h_output;
 
+  // Initial conditions
+  double theta_ini;
+  double res_ini;
+  
   // Canonical units info.
   double uM;
   double uL;
@@ -51,7 +55,7 @@ Inpar params(){
 
   ////////////////////////////////////////////////////////////
   //
-  // Getting and storing General Properties
+  // Getting and storing General Properties and initial conditions
   //
   ////////////////////////////////////////////////////////////
 
@@ -61,6 +65,8 @@ Inpar params(){
   double h_output;
   double uM;
   double uL;
+  double theta_ini;
+  double res_ini;
   
   
   //config_lookup_string(&cfg, "method", &met);
@@ -70,6 +76,8 @@ Inpar params(){
   config_lookup_float(&cfg,  "h_output"   , &h_output);
   config_lookup_float(&cfg,  "uM"         , &uM);
   config_lookup_float(&cfg,  "uL"         , &uL);
+  config_lookup_float(&cfg,  "theta_ini"  , &theta_ini);
+  config_lookup_float(&cfg,  "res_ini"    , &res_ini);
 
   
   ////////////////////////////////////////////////////////////
@@ -141,25 +149,26 @@ Inpar params(){
   double uT =  units(uM,uL,"uT")[2];
 
 
-  rest.m_p      = m_p * ME/uM;
-  rest.R_p      = R_p * RE/uL;
-  rest.BmAC     = BmAC;
-  rest.gyr_rad  = gyr_rad;
-  rest.a        = a * AU/uL;
-  rest.e        = e;
-  rest.P_rot    = P_rot * DAYS/uT;
-  rest.tau_M    = tau_M * YEARS/uT;
-  rest.mu       = mu * (uL*uT*uT/uM);
-  rest.alpha    = alpha;
-  rest.m_s      = m_s * MS/uM;
-  rest.sim_name = sim_name;
-  rest.t_ini    = t_ini * YEARS/uT;
-  rest.t_end    = t_end * YEARS/uT;
-  rest.h_output = h_output * YEARS/uT;
-
-  rest.uM       = uM;
-  rest.uL       = uL;
-  rest.uT       = uT;
+  rest.m_p       = m_p * ME/uM;
+  rest.R_p       = R_p * RE/uL;
+  rest.BmAC      = BmAC;
+  rest.gyr_rad   = gyr_rad;
+  rest.a         = a * AU/uL;
+  rest.e         = e;
+  rest.P_rot     = P_rot * DAYS/uT;
+  rest.tau_M     = tau_M * YEARS/uT;
+  rest.mu        = mu * (uL*uT*uT/uM);
+  rest.alpha     = alpha;
+  rest.m_s       = m_s * MS/uM;
+  rest.sim_name  = sim_name;
+  rest.t_ini     = t_ini * YEARS/uT;
+  rest.t_end     = t_end * YEARS/uT;
+  rest.h_output  = h_output * YEARS/uT;
+  rest.theta_ini = theta_ini * InRad;
+  rest.res_ini   = res_ini;
+  rest.uM        = uM;
+  rest.uL        = uL;
+  rest.uT        = uT;
   
   return rest;
   config_destroy(&cfg);

@@ -6,6 +6,7 @@
 #include "hansen.h"
 #include <gsl/gsl_sf_gamma.h>
 #include "Torques.h"
+#include "EOM.h"
 
 int main (void){
 
@@ -29,11 +30,6 @@ int main (void){
   }
   */
   
-  printf("%e\n",triaxial_torque(0.0,st.a,st.e,st,1.0*YEARS/st.uT)*(YEARS*YEARS/(st.uT*st.uT)));
-
-  exit(0);  
-    //  Inpar st;
-    //st = params();
 
   //gsl_odeiv2_driver_alloc_y_new(const gsl_odeiv2_system * sys,
   //                              const gsl_odeiv2_step_type * T,
@@ -41,7 +37,7 @@ int main (void){
   //                              const double epsabs,
   //                              const double epsrel)
 
-  /*  
+  
   ////////////////////////////////////////////////////////////
   // This is the only line must be modified by the user
   //
@@ -50,24 +46,19 @@ int main (void){
   ////////////////////////////////////////////////////////////
 
 
-  gsl_odeiv2_system sys = { func, NULL, 16, &st}; // Define sistema de ecuaciones
+  gsl_odeiv2_system sys = { func, NULL, 2, &st}; // Define sistema de ecuaciones
   gsl_odeiv2_driver *d = gsl_odeiv2_driver_alloc_y_new (&sys, T, 1e-3, 1e-8, 1e-8);
-
 
   printf("hola \n");
 
-
-  double y[16] = { st.a_in, st.a_out, st.e_in, st.e_out, 
-		   st.I_in, st.I_out, st.W_in, st.W_out,
-		   st.w_in, st.w_out, st.Om_Ax, st.Om_Ay,
-		   st.Om_Az, st.Om_Bx, st.Om_By, st.Om_Bz}; // y[number of entries of the array] = {}
+  
+  double n_ini = n(st.m_p,st.m_s,st.a);
+  double y[2] = { st.theta_ini, st.res_ini*n_ini}; // y[number of entries of the array] = {}
   
    int i, s;
    double t = st.t_ini;
    double progress;
 
-   
-   FetchInfo(st);
    
    FILE *fp;
    char src[100];
@@ -98,13 +89,13 @@ int main (void){
      }
      
 
-     fprintf(fp,"%.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e %.5e \n",
-	     t,y[0],y[1],y[2],y[3],y[4],y[5],y[6],y[7],y[8],y[9],y[10],y[11],y[12],y[13],y[14],y[15]);
+     fprintf(fp,"%.5e %.5e %.5e %.5e %.5e \n",
+	     t,y[0],y[1],st.a,st.e);
    }
    
    gsl_odeiv2_driver_free (d);
    fclose(fp);
-  */
+  
    
    return 0;
    

@@ -24,6 +24,6 @@ int func (double t, const double y[], double f[], void *params){
   f[0] = dtheta_dt(theta,Omega,a,e,t,parameters);
   f[1] = dOmega_dt(theta,Omega,a,e,t,parameters);
   
-  return GSL_SUCESS;
+  return GSL_SUCCESS;
 
 }
