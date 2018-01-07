@@ -34,7 +34,7 @@ double tidal_torque(double Omega, double a, double e, Inpar params){
 
 
 
-double triaxial_torque(double theta, double a, double e, Inpar params, double t){
+double triaxial_torque(double theta, double a, double e, double t, Inpar params){
   double BmA,f,M,E,r;
   M = n(params.m_s,params.m_p,a)*t;
   E = solveKepler(e,M);
@@ -42,7 +42,7 @@ double triaxial_torque(double theta, double a, double e, Inpar params, double t)
   f = 2.0*atan(pow((1.0+e)/(1.0-e),0.5)*tan(0.5*E));
   BmA = params.BmAC * Cfactor(params.m_p,params.R_p,params.gyr_rad);
   
-  return 1.5*(BmA)*pow(n(params.m_s,params.m_p,a),2)*pow(a/r,3)*sin(2.0*(theta-f));
+  return -1.5*(BmA)*pow(n(params.m_s,params.m_p,a),2)*pow(a/r,3)*sin(2.0*(theta-f));
   
 }
 

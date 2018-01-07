@@ -29,7 +29,7 @@ int main (void){
   }
   */
   
-  printf("%e\n",triaxial_torque(0.0,st.a,st.e,st,1.0));
+  printf("%e\n",triaxial_torque(0.0,st.a,st.e,st,1.0*YEARS/st.uT)*(YEARS*YEARS/(st.uT*st.uT)));
 
   exit(0);  
     //  Inpar st;
