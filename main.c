@@ -14,7 +14,7 @@ int main (void){
   st = params();
   FetchInfo(st);
 
-  /*
+  /*  
   FILE *fp;
   char src[100];
   char dest[100];
@@ -31,6 +31,7 @@ int main (void){
   */
   
 
+  
   //gsl_odeiv2_driver_alloc_y_new(const gsl_odeiv2_system * sys,
   //                              const gsl_odeiv2_step_type * T,
   //                              const double hstart,
@@ -41,15 +42,13 @@ int main (void){
   ////////////////////////////////////////////////////////////
   // This is the only line must be modified by the user
   //
-  const gsl_odeiv2_step_type *T = gsl_odeiv2_step_rkf45;
+  const gsl_odeiv2_step_type *T = gsl_odeiv2_step_rk2;
   //
   ////////////////////////////////////////////////////////////
 
 
   gsl_odeiv2_system sys = { func, NULL, 2, &st}; // Define sistema de ecuaciones
-  gsl_odeiv2_driver *d = gsl_odeiv2_driver_alloc_y_new (&sys, T, 1e-3, 1e-8, 1e-8);
-
-  printf("hola \n");
+  gsl_odeiv2_driver *d = gsl_odeiv2_driver_alloc_y_new (&sys, T, 1.0e-3, 1e-8, 1e-8);
 
   
   double n_ini = n(st.m_p,st.m_s,st.a);
@@ -70,8 +69,11 @@ int main (void){
    fp = fopen(name_files,"w");
    double ti = t;
 
-
-
+   double Omega_ini = st.res_ini*n_ini;
+   printf("%e \n",dtheta_dt(st.theta_ini,Omega_ini,st.a,st.e,1.0,st));
+   printf("%e \n",dOmega_dt(st.theta_ini,Omega_ini,st.a,st.e,1.0,st));
+  
+   
    while(t<st.t_end){
 
      s = gsl_odeiv2_driver_apply(d, &t, ti, y);
